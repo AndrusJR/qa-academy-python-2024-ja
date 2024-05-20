@@ -1,0 +1,12 @@
+[flake8]
+exclude =
+    migrations
+    __pycache__
+    .pytest_cache
+    manage.py
+    settings.py
+    venv
+    .venv
+    ./venv
+    venv/
+    .venv/
