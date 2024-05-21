@@ -1,12 +1,15 @@
 import pytest
-from src.system_under_test.ui.github_ui import GitHubUI
-from src.system_under_test.api.github_api import GitHubAPIClient
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
+from src.system_under_test.api.github_api import GitHubAPIClient
+from src.system_under_test.ui.github_ui import GitHubUI
 
-service=Service(executable_path="C:\Projects\Git_QA_academy\qa-academy-python-2024-ja\Web_drivers\chromedriver-win64\chromedriver.exe")
+service = Service(
+    executable_path="C:\Projects\Git_QA_academy\qa-academy-python-2024-ja\Web_drivers\chromedriver-win64\chromedriver.exe"
+)
 driver = webdriver.Chrome(service=service)
+
 
 # hook for pytest plugin
 def pytest_html_report_title(report):
@@ -16,9 +19,10 @@ def pytest_html_report_title(report):
 # fixture for tests
 @pytest.fixture
 def git_hub_ui_app():
-    service=Service(executable_path="C:\Projects\Git_QA_academy\qa-academy-python-2024-ja\Web_drivers\chromedriver-win64\chromedriver.exe")
+    service = Service(
+        executable_path="C:\Projects\Git_QA_academy\qa-academy-python-2024-ja\Web_drivers\chromedriver-win64\chromedriver.exe"
+    )
     driver = webdriver.Chrome(service=service)
-
 
     # 1. Prestep. Navigate to GithubAPP
     githubui_app = GitHubUI(browser=driver)
@@ -29,6 +33,7 @@ def git_hub_ui_app():
 
     # PostStep. Close the App
     githubui_app.close()  # webdriver method - BAD
+
 
 @pytest.fixture
 def git_hub_api_client():

@@ -1,8 +1,9 @@
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
 
 class BaseApp:
 
@@ -23,25 +24,23 @@ class BaseApp:
         return True
 
     def find_text(self, text):
-        if self.browser.find_element(By.XPATH ,f"//*[contains(text(), '{text}')]"):
+        if self.browser.find_element(By.XPATH, f"//*[contains(text(), '{text}')]"):
 
             return True
 
         raise RuntimeError(f"expected text '{text}' is not present")
-
 
     def enter_text(self, locator, text):
         elem = self.browser.find_element(*locator)
         elem.clear()
         elem.send_keys(text)
         time.sleep(2)
-        if elem.get_attribute('value') != text:
+        if elem.get_attribute("value") != text:
             raise RuntimeError(f"Text {text} is not entered to {locator} element")
-
 
         elem.send_keys(Keys.RETURN)
 
         return True
 
     def close_browser(self):
-        self.browser.close()       
+        self.browser.close()

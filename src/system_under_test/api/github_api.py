@@ -8,8 +8,8 @@ class GitHubAPIClient:
 
     def search_repos(self, repo_name):
         r = requests.get(
-            url=f'https://api.github.com/search/repositories?q={repo_name}',
+            url=f"https://api.github.com/search/repositories?q={repo_name}",
         )
 
         data = r.json()
-        return data['total_count'], r
+        return data["total_count"], r

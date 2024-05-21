@@ -1,6 +1,6 @@
-from src.system_under_test.ui.pages.login_page import LoginPage
-#from src.system_under_test.ui.pages.signup_page import SignUpPage
+# from src.system_under_test.ui.pages.signup_page import SignUpPage
 from src.system_under_test.ui.base_app import BaseApp
+from src.system_under_test.ui.pages.login_page import LoginPage
 
 
 class GitHubUI(BaseApp):
@@ -12,10 +12,11 @@ class GitHubUI(BaseApp):
 
     def open(self):
         self.open_browser()
+
     def try_login(self, username: str, password: str):
         return self.login_page.try_login(username, password)
 
-    def check_wrong_creds_message(self, message:str):
+    def check_wrong_creds_message(self, message: str):
         return self.login_page.check_wrong_creds_message(message)
 
     def logout(self):

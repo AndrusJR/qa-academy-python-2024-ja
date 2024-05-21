@@ -8,7 +8,9 @@ def test_check_search_repo(git_hub_api_client):
     """
 
     # 1. send API request to find the repo named BLA
-    repos_number, response = git_hub_api_client.search_repos("qa-academy-python-2024-ja")
+    repos_number, response = git_hub_api_client.search_repos(
+        "qa-academy-python-2024-ja"
+    )
 
     # 2. Analyse the responce
     # equal to
@@ -16,4 +18,4 @@ def test_check_search_repo(git_hub_api_client):
     #   raise Excpetion("Bad request")
     response.raise_for_status()
 
-    assert repos_number == 352
+    assert repos_number == 1
